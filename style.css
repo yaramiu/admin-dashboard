@@ -6,4 +6,37 @@
 
 .sidebar {
   grid-row: 1 / 3;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.sidebar .icons,
+.sidebar .text {
+  display: grid;
+  grid-template-rows: 2fr repeat(9, 1fr);
+}
+
+.header,
+.main-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.projects {
+  grid-row: 1 / 3;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.card {
+  height: 250px;
+}
+
+.trending {
+  grid-column: 2 / 3;
 }
