@@ -3,17 +3,22 @@
 :root {
   --sidebar-background-color: #1992d4;
   --button-background-color: var(--sidebar-background-color);
+  --sidebar-text-color: white;
+  --button-text-color: var(--sidebar-text-color);
 }
 
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
+
+  height: 100%;
+  overflow: hidden;
 }
 
 .container {
   display: grid;
   grid-template-columns: 1fr 4.5fr;
-  grid-template-rows: 0.8fr 4.5fr;
+  grid-template-rows: 0.6fr 4.5fr;
 }
 
 .sidebar {
@@ -22,11 +27,11 @@ body {
   grid-template-columns: 1fr 4fr;
 
   background-color: var(--sidebar-background-color);
-  color: white;
+  color: var(--sidebar-text-color);
   padding-left: 1vw;
 }
 
-.icons {
+.sidebar .icons {
   display: grid;
   align-items: center;
 }
@@ -84,7 +89,11 @@ img.dashboard {
 }
 
 .header {
+  grid-template-columns: 1.9fr 1fr;
   grid-template-rows: repeat(2, 0.2fr);
+
+  box-shadow: 0 6px 2px -2px #ced3da;
+  z-index: 1;
 }
 
 .user-info .notification,
@@ -135,6 +144,10 @@ img.dashboard {
   font-weight: bold;
 }
 
+.bottom-left-section {
+  margin-bottom: 0.4rem;
+}
+
 .welcome-message {
   display: grid;
   grid-template-columns: 8vw 16vw;
@@ -177,7 +190,7 @@ img.dashboard {
 .buttons {
   align-self: center;
   display: flex;
-  column-gap: 1vw;
+  column-gap: 1.5vw;
 
   margin-left: 1vw;
   margin-top: 1vh;
@@ -185,7 +198,7 @@ img.dashboard {
 
 .buttons button {
   background-color: var(--button-background-color);
-  color: white;
+  color: var(--button-text-color);
   border: none;
   border-radius: 20px;
   padding: 0.5rem;
@@ -196,27 +209,173 @@ img.dashboard {
 .header,
 .main-content {
   display: grid;
-  grid-template-columns: 2fr 1fr;
 }
 
 .main-content {
+  grid-template-columns: 3fr 1fr;
   grid-template-rows: repeat(2, 1fr);
+  background-color: #e2e8f0;
 }
 
 .projects {
   grid-row: 1 / 3;
+
+  margin-left: 1rem;
+}
+
+.projects .text,
+.announcements .text,
+.trending .text {
+  font-size: 16px;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(2, 0.49fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
 .card {
-  height: 250px;
+  height: 20vh;
+  width: auto;
+  background-color: white;
+  border-radius: 12px;
+
+  display: grid;
+  grid-template-columns: 0.2fr 10fr;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.card .sidecolor {
+  grid-row: 1 / 4;
+
+  background-color: #f0b429;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.card h3,
+.card p {
+  margin: 0.5rem 2rem 0 1rem;
+}
+
+.card h3 {
+  font-size: 0.875rem;
+  align-self: end;
+}
+
+.card p {
+  font-size: 0.75rem;
+  margin-right: 2rem;
+  color: #636363;
+
+  align-self: start;
+}
+
+.card .icons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2vw;
+
+  margin-right: 1rem;
+}
+
+.star.icon,
+.watch.icon,
+.fork.icon {
+  width: 1.2vw;
+  height: auto;
+}
+
+.announcements,
+.trending {
+  margin-right: 2vw;
+}
+
+.announcements .messages {
+  display: grid;
+  grid-template-rows: repeat(3, 0.5fr);
+
+  background-color: white;
+  border-radius: 12px;
+}
+
+.announcements .messages * {
+  margin: 0 1rem;
+}
+
+.messages .message.one {
+  margin-top: 1rem;
+}
+
+.messages .message.three {
+  margin-bottom: 1rem;
+}
+
+.messages .message h4 {
+  font-size: 0.75rem;
+  margin-top: 1rem;
+}
+
+.messages .message p {
+  font-size: 0.688rem;
+  color: #636363;
+  margin-bottom: 1rem;
+}
+
+hr {
+  border-top: 1px solid lightgray;
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
 }
 
 .trending {
   grid-column: 2 / 3;
+}
+
+.trending h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.trending-users {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+
+  background-color: white;
+  border-radius: 12px;
+}
+
+.trending-users * {
+  margin: 0.2rem;
+}
+
+.trending-users .profile-pictures * {
+  width: 3vw;
+  height: auto;
+}
+
+.trending-users .profile-pictures {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.trending-users .users * {
+  margin-top: 0.35rem;
+}
+
+.users .user h4 {
+  font-size: 1rem;
+  font-weight: lighter;
+}
+
+.users .user p {
+  color: #636363;
+}
+
+.users .user * {
+  margin: 0;
 }
